@@ -19,8 +19,15 @@ const Profile = () => {
 
         if(img){
             const uploadImg = async () => {
-                const imgRef = ref(storage, `avatar/${new Date().getTime()} - ${img.name}`)
-            }
+                const imgRef = ref(
+                    storage, 
+                    `avatar/${new Date().getTime()} - ${img.name}`);
+                const snap = await uploadBytes(imgRef, img);
+
+                console.log(snap.ref.fullPath);
+            };
+
+            uploadImg()
         }
 
     }, [img])
