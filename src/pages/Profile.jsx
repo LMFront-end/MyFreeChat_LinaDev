@@ -6,7 +6,7 @@ import {
     getDownloadURL,
     uploadBytes 
 } from 'firebase/storage';
-import {getDoc, doc} from 'firebase/firestore'
+import {getDoc, doc, updateDoc} from 'firebase/firestore'
 
 import Img from '../../assets/user.png';
 
@@ -30,12 +30,27 @@ const Profile = () => {
                 const imgRef = ref(
                     storage, 
                     `avatar/${new Date().getTime()} - ${img.name}`);
+
+                try {
+
                 const snap = await uploadBytes(imgRef, img);
 
-                console.log(snap.ref.fullPath);
+                const url = await getDownloadURL(ref(storage, snap.ref.fullPath));
+
+                await updateDoc(doc(db, 'users', auth.currentUser.uid), {
+                    avatar: url,
+                    avatarPath: snap.ref.fullPath,
+                });
+
+                setImg("");
+
+                }catch(err){
+                    console.log(err.message);
+                }
+
             };
 
-            uploadImg()
+            uploadImg();
         }
 
     }, [img])
