@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Camera } from '../components/svg/Camera'
 
 import Img from '../../assets/user.png';
 
 const Profile = () => {
+
+    const [img, setImg] = useState("");
+
     return (
     <section>
         <div className="profile_container">
@@ -13,7 +16,12 @@ const Profile = () => {
                     <label htmlFor="photo">
                         <Camera />
                     </label>
-                    <input type="file" accept="image/*" style={{display: "none"}} id='photo' />
+                    <input 
+                    type="file" accept="image/*" 
+                    style={{display: "none"}} 
+                    id='photo' 
+                    onChange={(e) => setImg(e.target.files[0])}
+                    />
                 </div>
             </div>
             <div className="text_container">
