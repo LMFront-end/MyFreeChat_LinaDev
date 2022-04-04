@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Camera } from '../components/svg/Camera'
+import { storage } from '../../data/configFirebase'
+import { 
+    ref, 
+    getDownloadURL,
+    uploadBytes 
+} from 'firebase/storage';
 
 import Img from '../../assets/user.png';
 
@@ -7,6 +13,17 @@ const Profile = () => {
 
     const [img, setImg] = useState("");
     console.log(img);
+
+
+    useEffect(() => {
+
+        if(img){
+            const uploadImg = async () => {
+                const imgRef = ref(storage, `avatar/${new Date().getTime()} - ${img.name}`)
+            }
+        }
+
+    }, [img])
 
     return (
     <section>

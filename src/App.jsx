@@ -9,7 +9,7 @@ import { MyFreeChat } from './pages/MyFreeChat'
 import { Home } from '../src/pages/Home'
 import { Register } from '../src/pages/Register'
 import { Login } from '../src/pages/Login'
-import { Profile } from '../src/pages/Profile'
+import { Profile } from './pages/Profile'
 import { Contacts } from './pages/contact/Contacts'
 
 
