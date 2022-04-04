@@ -11,6 +11,7 @@ import { Register } from '../src/pages/Register'
 import { Login } from '../src/pages/Login'
 import { Profile } from './pages/Profile'
 import { Contacts } from './pages/contact/Contacts'
+import { Messages } from './pages/Messages'
 
 
 const App = ()  => {
@@ -26,6 +27,8 @@ const App = ()  => {
         <Route path={"/home"} exact element={<Home />}/>
         <Route path={"/profile"} exact element={<Profile/>}/>
         <Route path={"/contacts"} exact element={<Contacts/>}/>
+        <Route path={"/messenger"} exact element={<Messages/>}/>
+
 
       </Routes>
     </>

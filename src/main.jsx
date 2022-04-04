@@ -11,6 +11,7 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 import '../node_modules/react-icons/fa';
 // moment
 import '../node_modules/moment'
+import '../node_modules/react-moment'
 import {BrowserRouter, Route, Routes} from '../node_modules/react-router-dom';
 // provider
 import AuthProvider from './context/auth'
