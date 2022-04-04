@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Camera } from '../components/svg/Camera'
-import { storage } from '../../data/configFirebase'
+import { storage, db, auth } from '../../data/configFirebase'
 import { 
     ref, 
     getDownloadURL,
     uploadBytes 
 } from 'firebase/storage';
+import {getDoc, doc} from 'firebase/firestore'
 
 import Img from '../../assets/user.png';
 
 const Profile = () => {
 
     const [img, setImg] = useState("");
-    console.log(img);
+    const [user, setUser] = useState();
 
 
     useEffect(() => {
+
+        getDoc(doc(db, 'users', auth.currentUser.uid))
+            .then(docSnap => {
+                if(docSnap.exists){
+                    setUser(docSnap.data());
+                }
+            });
 
         if(img){
             const uploadImg = async () => {
