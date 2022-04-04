@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Camera } from '../components/svg/Camera'
 
 import Img from '../../assets/user.png';
@@ -6,6 +6,7 @@ import Img from '../../assets/user.png';
 const Profile = () => {
 
     const [img, setImg] = useState("");
+    console.log(img);
 
     return (
     <section>
